@@ -10,6 +10,8 @@
 	--rose: #b98682;
 	--sage: #7f9078;
 	--shadow: rgba(84, 63, 39, 0.15);
+	--font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	--font-poem: "LXGW WenKai GB Screen", "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
 	color-scheme: light;
 	font-size: 16px;
 }
@@ -34,7 +36,7 @@ body {
 		radial-gradient(circle at 16% 28%, rgba(217, 190, 151, 0.22), transparent 26rem),
 		radial-gradient(circle at 88% 76%, rgba(185, 134, 130, 0.16), transparent 28rem),
 		linear-gradient(180deg, #faf7f1 0%, #efe7dc 44%, #fbf7ef 100%);
-	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	font-family: var(--font-ui);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
@@ -162,7 +164,7 @@ body::after {
 .letter-head,
 .stanza-label,
 .signature {
-	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	font-family: var(--font-ui);
 }
 
 .eyebrow {
@@ -170,14 +172,15 @@ body::after {
 	color: var(--gold);
 	font-size: 0.78rem;
 	font-weight: 600;
-	letter-spacing: 0.18em;
+	letter-spacing: 0;
 }
 
 .hero h1 {
 	max-width: 9em;
 	margin: 0;
+	font-family: var(--font-poem);
 	font-size: clamp(4rem, 16vw, 10rem);
-	font-weight: 700;
+	font-weight: 400;
 	letter-spacing: 0;
 	line-height: 0.95;
 	white-space: nowrap;
@@ -318,7 +321,7 @@ body::after {
 	margin: 0;
 	font-size: 0.76rem;
 	font-weight: 600;
-	letter-spacing: 0.14em;
+	letter-spacing: 0;
 	text-transform: uppercase;
 }
 
@@ -336,13 +339,15 @@ body::after {
 }
 
 .stanza-label {
-	margin-bottom: 1.55rem;
+	margin-bottom: 1.35rem;
 	color: var(--gold);
+	font-size: 0.82rem;
+	font-weight: 500;
 }
 
 .poem-copy {
 	margin: 0;
-	font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+	font-family: var(--font-poem);
 	font-size: clamp(1.2rem, 2.7vw, 1.78rem);
 	font-weight: 400;
 	line-height: 2.12;
@@ -415,14 +420,11 @@ body::after {
 
 .vow .poem-copy span {
 	display: inline-block;
-	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-	font-size: clamp(2.2rem, 7.2vw, 5.5rem);
-	font-weight: 700;
-	line-height: 1.15;
-	background: linear-gradient(100deg, #1d1d1f 0%, #a97835 48%, #1d1d1f 100%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
+	font-family: var(--font-poem);
+	font-size: clamp(1.8rem, 5.6vw, 3.7rem);
+	font-weight: 400;
+	line-height: 1.55;
+	color: #5f4930;
 }
 
 .signature {
@@ -430,6 +432,13 @@ body::after {
 	justify-content: flex-end;
 	padding-top: clamp(2rem, 5vw, 3.5rem);
 	color: var(--soft-ink);
+}
+
+.signature span {
+	font-family: var(--font-poem);
+	font-size: clamp(1.28rem, 3vw, 1.75rem);
+	font-weight: 400;
+	text-transform: none;
 }
 
 @keyframes draw-line {
