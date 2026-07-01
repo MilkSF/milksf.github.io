@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta name="theme-color" content="#11162d">
+		<title>九周年快乐</title>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+		<canvas class="firefly-canvas" aria-hidden="true"></canvas>
+		<main class="poem-shell" aria-label="九周年诗歌">
+			<section class="book" aria-live="polite">
+				<article class="poem-page is-active" data-page="1">
+					<div class="page-inner">
+						<p>
+							<span>犹记那夏夜，我们曾一起追逐流萤，</span>
+							<span>也曾并肩而立，望雪山之巅的纯净。</span>
+							<span>九年的光阴，是一场浪漫的远行，</span>
+							<span>我所有的偏爱，都写进你温柔的眼睛。</span>
+						</p>
+					</div>
+				</article>
+
+				<article class="poem-page" data-page="2">
+					<div class="page-inner">
+						<p>
+							<span>纵然常年奔波在外，听铁轨传来的轰鸣，</span>
+							<span>或是偶尔飞往异乡，看向窗外的繁星。</span>
+							<span>看着可爱的孩童长大，岁月安稳宁静，</span>
+							<span>我知道，是你倾注了太多辛劳与深情。</span>
+						</p>
+					</div>
+				</article>
+
+				<article class="poem-page" data-page="3">
+					<div class="page-inner">
+						<p>
+							<span>不需要去远方，刻意寻觅什么新鲜，</span>
+							<span>我只爱牵着你，逛逛熟悉的夜市街边。</span>
+							<span>或是依偎沙发，看流年缓缓浮现，</span>
+							<span>把你温暖的手，紧紧握在我的掌心里面。</span>
+						</p>
+					</div>
+				</article>
+
+				<article class="poem-page celebration" data-page="4">
+					<div class="page-inner">
+						<p class="single-line">
+							<span>老婆，九周年快乐。</span>
+						</p>
+					</div>
+				</article>
+
+				<article class="poem-page" data-page="5">
+					<div class="page-inner">
+						<p>
+							<span>愿我们一生一世，都能这样相伴相守，</span>
+							<span>在这个偶尔疲惫，却被爱填满的宇宙，</span>
+							<span>只要你的目光，依然只为我停留，</span>
+							<span>这场名为爱情的旅程，就永远没有尽头。</span>
+						</p>
+					</div>
+				</article>
+			</section>
+
+			<nav class="controls" aria-label="诗页导航">
+				<button class="nav-button" type="button" data-action="prev" aria-label="上一页">
+					<span aria-hidden="true">‹</span>
+				</button>
+				<div class="pagination" aria-label="页码">
+					<button class="dot is-active" type="button" data-page-target="0" aria-label="第 1 页"></button>
+					<button class="dot" type="button" data-page-target="1" aria-label="第 2 页"></button>
+					<button class="dot" type="button" data-page-target="2" aria-label="第 3 页"></button>
+					<button class="dot" type="button" data-page-target="3" aria-label="第 4 页"></button>
+					<button class="dot" type="button" data-page-target="4" aria-label="第 5 页"></button>
+				</div>
+				<button class="nav-button" type="button" data-action="next" aria-label="下一页">
+					<span aria-hidden="true">›</span>
+				</button>
+			</nav>
+		</main>
+		<script src="./script.js"></script>
+	</body>
+</html>
