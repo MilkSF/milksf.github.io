@@ -3,16 +3,40 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-		<meta name="theme-color" content="#11162d">
+		<meta name="theme-color" content="#faf6ee">
 		<title>九周年快乐</title>
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
-		<canvas class="firefly-canvas" aria-hidden="true"></canvas>
-		<main class="poem-shell" aria-label="九周年诗歌">
-			<section class="book" aria-live="polite">
-				<article class="poem-page is-active" data-page="1">
-					<div class="page-inner">
+		<svg class="svg-defs" aria-hidden="true">
+			<symbol id="sprig" viewBox="0 0 220 220">
+				<path d="M42 178C88 145 125 105 159 42" />
+				<path d="M82 145C58 121 51 99 62 78C90 92 101 113 95 141" />
+				<path d="M116 111C95 84 94 58 113 39C138 62 143 88 129 115" />
+				<path d="M143 80C161 57 180 48 203 54C196 82 179 96 151 95" />
+				<path d="M68 160C47 158 32 166 22 184C42 193 59 188 72 169" />
+				<circle cx="160" cy="42" r="5" />
+				<circle cx="204" cy="54" r="4" />
+				<circle cx="22" cy="184" r="4" />
+			</symbol>
+		</svg>
+
+		<div class="ambient" aria-hidden="true">
+			<span class="petal"></span>
+			<span class="petal"></span>
+			<span class="petal"></span>
+			<span class="petal"></span>
+			<span class="petal"></span>
+			<span class="petal"></span>
+		</div>
+
+		<main class="story" aria-label="九周年诗歌">
+			<section class="poem-panel is-visible" data-panel="01">
+				<div class="paper">
+					<svg class="ornament ornament-top" aria-hidden="true"><use href="#sprig"></use></svg>
+					<svg class="ornament ornament-bottom" aria-hidden="true"><use href="#sprig"></use></svg>
+					<p class="folio">2017 / 2026</p>
+					<div class="poem-copy">
 						<p>
 							<span>犹记那夏夜，我们曾一起追逐流萤，</span>
 							<span>也曾并肩而立，望雪山之巅的纯净。</span>
@@ -20,10 +44,15 @@
 							<span>我所有的偏爱，都写进你温柔的眼睛。</span>
 						</p>
 					</div>
-				</article>
+				</div>
+			</section>
 
-				<article class="poem-page" data-page="2">
-					<div class="page-inner">
+			<section class="poem-panel" data-panel="02">
+				<div class="paper">
+					<svg class="ornament ornament-top" aria-hidden="true"><use href="#sprig"></use></svg>
+					<svg class="ornament ornament-bottom" aria-hidden="true"><use href="#sprig"></use></svg>
+					<p class="folio">九年</p>
+					<div class="poem-copy">
 						<p>
 							<span>纵然常年奔波在外，听铁轨传来的轰鸣，</span>
 							<span>或是偶尔飞往异乡，看向窗外的繁星。</span>
@@ -31,10 +60,15 @@
 							<span>我知道，是你倾注了太多辛劳与深情。</span>
 						</p>
 					</div>
-				</article>
+				</div>
+			</section>
 
-				<article class="poem-page" data-page="3">
-					<div class="page-inner">
+			<section class="poem-panel" data-panel="03">
+				<div class="paper">
+					<svg class="ornament ornament-top" aria-hidden="true"><use href="#sprig"></use></svg>
+					<svg class="ornament ornament-bottom" aria-hidden="true"><use href="#sprig"></use></svg>
+					<p class="folio">相守</p>
+					<div class="poem-copy">
 						<p>
 							<span>不需要去远方，刻意寻觅什么新鲜，</span>
 							<span>我只爱牵着你，逛逛熟悉的夜市街边。</span>
@@ -42,18 +76,28 @@
 							<span>把你温暖的手，紧紧握在我的掌心里面。</span>
 						</p>
 					</div>
-				</article>
+				</div>
+			</section>
 
-				<article class="poem-page celebration" data-page="4">
-					<div class="page-inner">
+			<section class="poem-panel vow" data-panel="04">
+				<div class="paper">
+					<svg class="ornament ornament-top" aria-hidden="true"><use href="#sprig"></use></svg>
+					<svg class="ornament ornament-bottom" aria-hidden="true"><use href="#sprig"></use></svg>
+					<p class="folio">Anniversary</p>
+					<div class="poem-copy">
 						<p class="single-line">
 							<span>老婆，九周年快乐。</span>
 						</p>
 					</div>
-				</article>
+				</div>
+			</section>
 
-				<article class="poem-page" data-page="5">
-					<div class="page-inner">
+			<section class="poem-panel finale" data-panel="05">
+				<div class="paper">
+					<svg class="ornament ornament-top" aria-hidden="true"><use href="#sprig"></use></svg>
+					<svg class="ornament ornament-bottom" aria-hidden="true"><use href="#sprig"></use></svg>
+					<p class="folio">Forever</p>
+					<div class="poem-copy">
 						<p>
 							<span>愿我们一生一世，都能这样相伴相守，</span>
 							<span>在这个偶尔疲惫，却被爱填满的宇宙，</span>
@@ -61,25 +105,11 @@
 							<span>这场名为爱情的旅程，就永远没有尽头。</span>
 						</p>
 					</div>
-				</article>
-			</section>
-
-			<nav class="controls" aria-label="诗页导航">
-				<button class="nav-button" type="button" data-action="prev" aria-label="上一页">
-					<span aria-hidden="true">‹</span>
-				</button>
-				<div class="pagination" aria-label="页码">
-					<button class="dot is-active" type="button" data-page-target="0" aria-label="第 1 页"></button>
-					<button class="dot" type="button" data-page-target="1" aria-label="第 2 页"></button>
-					<button class="dot" type="button" data-page-target="2" aria-label="第 3 页"></button>
-					<button class="dot" type="button" data-page-target="3" aria-label="第 4 页"></button>
-					<button class="dot" type="button" data-page-target="4" aria-label="第 5 页"></button>
 				</div>
-				<button class="nav-button" type="button" data-action="next" aria-label="下一页">
-					<span aria-hidden="true">›</span>
-				</button>
-			</nav>
+			</section>
 		</main>
+
+		<div class="scroll-meter" aria-hidden="true"><span></span></div>
 		<script src="./script.js"></script>
 	</body>
 </html>
