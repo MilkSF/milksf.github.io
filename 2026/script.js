@@ -1,46 +1,53 @@
 (function () {
 	const root = document.documentElement;
-	const panels = Array.from(document.querySelectorAll(".poem-panel"));
-	const meter = document.querySelector(".scroll-meter span");
+	const progress = document.querySelector(".progress span");
+	const revealItems = Array.from(document.querySelectorAll(".reveal"));
 	let ticking = false;
 
-	function viewportHeight() {
-		return Math.round(window.visualViewport ? window.visualViewport.height : window.innerHeight);
+	root.classList.add("js-enabled");
+
+	function setViewportHeight() {
+		const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+		root.style.setProperty("--vh", `${height * 0.01}px`);
 	}
 
-	function setAppHeight() {
-		root.style.setProperty("--app-height", `${viewportHeight()}px`);
-	}
-
-	function updateScrollState() {
+	function updateProgress() {
 		const scrollTop = window.scrollY || window.pageYOffset;
-		const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-		const progress = Math.min(1, Math.max(0, scrollTop / maxScroll));
+		const maxScroll = Math.max(1, root.scrollHeight - window.innerHeight);
+		const ratio = Math.min(1, Math.max(0, scrollTop / maxScroll));
 
-		root.style.setProperty("--meter", progress.toFixed(4));
-		if (meter) {
-			meter.style.transform = `scaleY(${progress})`;
+		root.style.setProperty("--progress", ratio.toFixed(4));
+		if (progress) {
+			progress.style.transform = `scaleX(${ratio})`;
 		}
-
-		panels.forEach((panel) => {
-			const rect = panel.getBoundingClientRect();
-			const panelProgress = Math.min(1, Math.max(-1, rect.top / Math.max(1, window.innerHeight)));
-			panel.style.setProperty("--scroll-progress", panelProgress.toFixed(4));
-		});
-
 		ticking = false;
 	}
 
-	function requestScrollUpdate() {
+	function requestProgressUpdate() {
 		if (!ticking) {
-			window.requestAnimationFrame(updateScrollState);
+			window.requestAnimationFrame(updateProgress);
 			ticking = true;
 		}
 	}
 
-	function observePanels() {
+	function revealFallback() {
+		revealItems.forEach((item) => item.classList.add("is-visible"));
+	}
+
+	function revealVisibleItems() {
+		const viewport = window.innerHeight || root.clientHeight;
+
+		revealItems.forEach((item) => {
+			const rect = item.getBoundingClientRect();
+			if (rect.top < viewport * 0.9 && rect.bottom > viewport * 0.08) {
+				item.classList.add("is-visible");
+			}
+		});
+	}
+
+	function observeReveals() {
 		if (!("IntersectionObserver" in window)) {
-			panels.forEach((panel) => panel.classList.add("is-visible"));
+			revealFallback();
 			return;
 		}
 
@@ -48,23 +55,23 @@
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					entry.target.classList.add("is-visible");
+					observer.unobserve(entry.target);
 				}
 			});
 		}, {
-			root: null,
-			threshold: 0.34,
-			rootMargin: "0px 0px -8% 0px"
+			threshold: 0.18,
+			rootMargin: "0px 0px -12% 0px"
 		});
 
-		panels.forEach((panel) => observer.observe(panel));
+		revealItems.forEach((item) => observer.observe(item));
 	}
 
 	function handleResize() {
-		setAppHeight();
-		requestScrollUpdate();
+		setViewportHeight();
+		requestProgressUpdate();
 	}
 
-	window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+	window.addEventListener("scroll", requestProgressUpdate, { passive: true });
 	window.addEventListener("resize", handleResize, { passive: true });
 	window.addEventListener("orientationchange", () => window.setTimeout(handleResize, 220), { passive: true });
 
@@ -72,7 +79,9 @@
 		window.visualViewport.addEventListener("resize", handleResize, { passive: true });
 	}
 
-	setAppHeight();
-	observePanels();
-	updateScrollState();
+	setViewportHeight();
+	observeReveals();
+	revealVisibleItems();
+	window.requestAnimationFrame(revealVisibleItems);
+	updateProgress();
 }());
